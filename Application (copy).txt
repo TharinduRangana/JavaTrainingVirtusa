@@ -1,0 +1,45 @@
+import java.util.*;
+public class Application{
+public static void main(String [] args){
+String s = args[0];
+//String test = "0123456789";
+//System.out.println(getSubString("0123456789",0,6));
+//System.out.println(test.substring(0,6));
+for(int i=0;i<=args[0].length();i++){
+for(int j=i+6;j<=args[0].length();j++){
+//System.out.println(args[0].substring(i,j));
+//checkMirror(args[0].substring(i,j));
+String checkMirrorStr = getSubString(args[0],i,j);
+checkMirror(checkMirrorStr);
+}
+}
+
+}
+
+public static void checkMirror(String s){
+Stack<Character> stack = new Stack<Character>();
+
+for(int i=0;i<s.length();i++){
+stack.push(s.charAt(i));
+}
+String mirrorWord="";
+
+for(int i=0;i<s.length();i++){
+mirrorWord = mirrorWord + stack.pop();
+}
+//System.out.println(mirrorWord);
+if(s.equals(mirrorWord)){
+System.out.println("Palindrome: "+mirrorWord);
+}
+}
+
+public static String getSubString(String str,int first, int last){
+
+String subStr = "";
+for(int i=first;i<last;i++){
+subStr = subStr+str.charAt(i);
+}
+return subStr;
+}
+
+}
